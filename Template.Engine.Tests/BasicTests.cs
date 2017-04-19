@@ -16,95 +16,7 @@ namespace Infra.BTA.Tests {
         }
 
         [TestMethod]
-        public void Given_ValidNumericGreaterThanTest_When_Executed_ShouldNotFail() {
-            IExecutableObject exe = new Parser().Parse(new ParseContext("  [if 7 > 9]  ")).Executable;
-
-            var c = new Container {
-                Value = 10
-            };
-
-            ExecutionContext ec = ExecutionContext.Build(c);
-            exe.Execute(ec);
-
-            Console.WriteLine(((StringWriter)ec.Sink).ToString());
-        }
-
-        [TestMethod]
-        public void Given_ValidNumericLessThanTest_When_Executed_ShouldNotFail() {
-
-            var cur = "if Value < 10";
-            var exeObject = ExecutableObjectFactory.Realize(cur, cur.Split(' '));
-            exeObject.Content = cur;
-            var c = new Container {
-                Value = 10
-            };
-
-            ExecutionContext ec = ExecutionContext.Build(c);
-            exeObject.Execute(ec);
-
-        }
-
-        [TestMethod]
-        public void Given_ValidFalseEqualBooleanTest_When_Executed_ShouldNotFail() {
-
-            var cur = "if false == BooleanValue";
-            var exeObject = ExecutableObjectFactory.Realize(cur, cur.Split(' '));
-            exeObject.Content = cur;
-            var c = new Container {
-            };
-
-            ExecutionContext ec = ExecutionContext.Build(c);
-            exeObject.Execute(ec);
-
-        }
-
-        [TestMethod]
-        public void Given_ValidBooleanEqualFalseTest_When_Executed_ShouldNotFail() {
-
-            var cur = "if BooleanValue == false";
-            var exeObject = ExecutableObjectFactory.Realize(cur, cur.Split(' '));
-            exeObject.Content = cur;
-            var c = new Container {
-            };
-
-            ExecutionContext ec = ExecutionContext.Build(c);
-            exeObject.Execute(ec);
-
-        }
-
-        [TestMethod]
-        public void Given_ValidStringEqualNullTest_When_Executed_ShouldNotFail() {
-
-            var cur = "if StringValue == \"Test\"";
-            var exeObject = ExecutableObjectFactory.Realize(cur, cur.Split(' '));
-            exeObject.Content = cur;
-            var c = new Container {
-                StringValue = "Test"
-            };
-
-            ExecutionContext ec = ExecutionContext.Build(c);
-            exeObject.Execute(ec);
-
-        }
-
-        [TestMethod]
-        public void Given_ValidStringNotEqualTest_When_Executed_ShouldNotFail() {
-
-            var cur = "if StringValue != \"Test\"";
-            var exeObject = ExecutableObjectFactory.Realize(cur, cur.Split(' '));
-            exeObject.Content = cur;
-            var c = new Container {
-                StringValue = "Test"
-            };
-
-            ExecutionContext ec = ExecutionContext.Build(c);
-            exeObject.Execute(ec);
-
-        }
-
-        [TestMethod]
         public void Given_ConfiguredParser_When_GivenNumericComparison_ShouldFollowEarlyPath() {
-
             ExecuteNumericComparison(8, "Less");
         }
 
@@ -245,6 +157,95 @@ namespace Infra.BTA.Tests {
             var obj = new ContextObject(new Container { X = new Child { Y = new GrandChild { Z = "endofchain" } } });
             Assert.AreSame(obj.GetObject("X.Y.Z"), "endofchain");
         }
+
+        [TestMethod]
+        public void Given_ValidNumericGreaterThanTest_When_Executed_ShouldNotFail() {
+            IExecutableObject exe = new Parser().Parse(new ParseContext("  [if 7 > 9]  ")).Executable;
+
+            var c = new Container {
+                Value = 10
+            };
+
+            ExecutionContext ec = ExecutionContext.Build(c);
+            exe.Execute(ec);
+
+            Console.WriteLine(((StringWriter)ec.Sink).ToString());
+        }
+
+        [TestMethod]
+        public void Given_ValidNumericLessThanTest_When_Executed_ShouldNotFail() {
+
+            var cur = "if Value < 10";
+            var exeObject = ExecutableObjectFactory.Realize(cur, cur.Split(' '));
+            exeObject.Content = cur;
+            var c = new Container {
+                Value = 10
+            };
+
+            ExecutionContext ec = ExecutionContext.Build(c);
+            exeObject.Execute(ec);
+
+        }
+
+        [TestMethod]
+        public void Given_ValidFalseEqualBooleanTest_When_Executed_ShouldNotFail() {
+
+            var cur = "if false == BooleanValue";
+            var exeObject = ExecutableObjectFactory.Realize(cur, cur.Split(' '));
+            exeObject.Content = cur;
+            var c = new Container {
+            };
+
+            ExecutionContext ec = ExecutionContext.Build(c);
+            exeObject.Execute(ec);
+
+        }
+
+        [TestMethod]
+        public void Given_ValidBooleanEqualFalseTest_When_Executed_ShouldNotFail() {
+
+            var cur = "if BooleanValue == false";
+            var exeObject = ExecutableObjectFactory.Realize(cur, cur.Split(' '));
+            exeObject.Content = cur;
+            var c = new Container {
+            };
+
+            ExecutionContext ec = ExecutionContext.Build(c);
+            exeObject.Execute(ec);
+
+        }
+
+        [TestMethod]
+        public void Given_ValidStringEqualNullTest_When_Executed_ShouldNotFail() {
+
+            var cur = "if StringValue == \"Test\"";
+            var exeObject = ExecutableObjectFactory.Realize(cur, cur.Split(' '));
+            exeObject.Content = cur;
+            var c = new Container {
+                StringValue = "Test"
+            };
+
+            ExecutionContext ec = ExecutionContext.Build(c);
+            exeObject.Execute(ec);
+
+        }
+
+        [TestMethod]
+        public void Given_ValidStringNotEqualTest_When_Executed_ShouldNotFail() {
+
+            var cur = "if StringValue != \"Test\"";
+            var exeObject = ExecutableObjectFactory.Realize(cur, cur.Split(' '));
+            exeObject.Content = cur;
+            var c = new Container {
+                StringValue = "Test"
+            };
+
+            ExecutionContext ec = ExecutionContext.Build(c);
+            exeObject.Execute(ec);
+
+        }
+
+        
 
         private ClientContainer Client {
             get {
