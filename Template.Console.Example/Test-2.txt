@@ -1,0 +1,11 @@
+﻿Dear [Client.FirstName],<p></p>[context CompanyDetails]
+You've got a new exercise prescription from [RegisteredName]. As agreed, your goals are:<p></p><ul>
+[context ClientContainer][foreach Goals]
+<li>[_]</li>[end]
+</ul><br/>A summary of the prescription we arrived at:<br/><ul>
+<ul>
+[foreach Exercises]<li>[Region]</li>[if Region == "Neck"]Found a neck region[else]Work with [Region][end][end]
+</ul>
+<p>[context CompanyDetails][Address]>/p>[context ClientContainer]
+<p></p>For reference, your user name is [UserName], 
+the password as agreed with your consultant.<p></p>Good luck!
