@@ -18,7 +18,8 @@ The Template.Engine is multi targeted, .net 4.6+ and .netcoreapp 1.1.
 
 A fuller reference follows, but an example template text file from the test console app is:
 
-```Dear [Client.FirstName],<p></p>[context CompanyDetails]
+```
+Dear [Client.FirstName],<p></p>[context CompanyDetails]
 You've got a new exercise prescription from [RegisteredName]. As agreed, your goals are:<p></p><ul>
 [context ClientContainer]
 [foreach Goals]
